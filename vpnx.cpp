@@ -45,7 +45,6 @@ int main(int argc, char *argv[])
     // if VPN network of name id exists in your system and is online
     if (match == id)
     {
-      cout << id.c_str();
       string arg = "nmcli con down ";                                   // turn off vpn *
       string arg2 = "gsettings set org.gnome.system.proxy mode 'none'"; // turn off proxy **
       arg += id;                                                        // *
@@ -53,13 +52,12 @@ int main(int argc, char *argv[])
       const char *a2 = arg2.c_str(); // **
       exec(a);
       exec(a2);
-      cout << "\nDisconnected from " << id << endl;
+      cout << "Disconnected from: " << id << endl;
     }
 
     // if VPN network of name exists in your system and is offline
     else
     {
-      cout << id.c_str();
       string arg = "nmcli con up ";                                       // turn on vpn *
       string arg2 = "gsettings set org.gnome.system.proxy mode 'manual'"; // turn on proxy **
       arg += id;                                                          // *
@@ -67,7 +65,7 @@ int main(int argc, char *argv[])
       const char *a2 = arg2.c_str(); // **
       exec(a);
       exec(a2);
-      cout << "\nConnected to " << id << endl;
+      cout << "Connected to: " << id << endl;
     }
   }
 
