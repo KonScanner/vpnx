@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
   {
     string id = (string)argv[1];
     string match = regSearchnStore(exec("nmcli"), id);
+
     // if VPN network of name id exists in your system and is online
     if (match == id)
     {
@@ -54,6 +55,7 @@ int main(int argc, char *argv[])
       exec(a2);
       cout << "\nDisconnected from " << id << endl;
     }
+
     // if VPN network of name exists in your system and is offline
     else
     {
@@ -68,6 +70,7 @@ int main(int argc, char *argv[])
       cout << "\nConnected to " << id << endl;
     }
   }
+
   // no provided arguments
   else
   {
