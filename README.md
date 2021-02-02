@@ -1,6 +1,6 @@
 # vpnx
 
-<h1>Connect/Diconnec to/from vpn + turn on/off proxy</h1>
+<h1>Connect/Diconnect to/from vpn + turn on/off proxy</h1>
 
 - ### Requirements:
 
