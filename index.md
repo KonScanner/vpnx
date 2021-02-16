@@ -1,4 +1,6 @@
-# vpnx
+# <code>vpnx</code>
+
+---
 
 ## What is `vpnx`?
 
