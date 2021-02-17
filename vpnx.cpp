@@ -33,6 +33,21 @@ static inline string regSearchnStore(string str1, string str2)
   return match.str();
 }
 
+static inline void proxy(bool connect)
+{
+  string arg2;
+  if (connect == true)
+  {
+    arg2 = "gsettings set org.gnome.system.proxy mode 'manual'";
+  }
+  else
+  {
+    arg2 = "gsettings set org.gnome.system.proxy mode 'none'";
+  }
+  const char *a2 = arg2.c_str();
+  exec(a2);
+}
+
 int main(int argc, char *argv[])
 {
 
@@ -45,26 +60,24 @@ int main(int argc, char *argv[])
     // if VPN network of name id exists in your system and is online
     if (match == id)
     {
-      string arg = "nmcli con down ";                                   // turn off vpn *
-      string arg2 = "gsettings set org.gnome.system.proxy mode 'none'"; // turn off proxy **
-      arg += id;                                                        // *
+      string arg = "nmcli con down "; // turn off vpn *
+      arg += id;                      // *
       const char *a = arg.c_str();
-      const char *a2 = arg2.c_str(); // **
       exec(a);
-      exec(a2);
+      proxy(false);
+      cout << "Changing to proxy=='none'." << endl;
       cout << "Disconnected from: " << id << endl;
     }
 
     // if VPN network of name exists in your system and is offline
     else
     {
-      string arg = "nmcli con up ";                                       // turn on vpn *
-      string arg2 = "gsettings set org.gnome.system.proxy mode 'manual'"; // turn on proxy **
-      arg += id;                                                          // *
+      string arg = "nmcli con up "; // turn on vpn *
+      arg += id;                    // *
       const char *a = arg.c_str();
-      const char *a2 = arg2.c_str(); // **
       exec(a);
-      exec(a2);
+      proxy(true);
+      cout << "Changing to proxy=='manual'." << endl;
       cout << "Connected to: " << id << endl;
     }
   }

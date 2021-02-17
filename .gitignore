@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Local compiler
+cp-file.sh
+vpnx
