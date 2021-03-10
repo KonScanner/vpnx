@@ -75,6 +75,7 @@ int main(int argc, char *argv[])
       string arg = "nmcli con up "; // turn on vpn *
       arg += id;                    // *
       const char *a = arg.c_str();
+      proxy(false); // ensuring setting is on off
       exec(a);
       proxy(true);
       cout << "Changing to proxy=='manual'." << endl;
